@@ -1,7 +1,4 @@
 import * as express from "express";
-import { Sequelize, Model, DataTypes } from "sequelize";
-import { sequelize } from "./db";
-import { User } from "./db/user";
 import { Product } from "./db/product";
 
 const port = process.env.PORT || 3000;
@@ -11,7 +8,6 @@ app.use(express.json());
 app.get("/products", async (req, res) => {
   const allProducts = await Product.findAll();
   res.json(allProducts);
-  // res.json(allProducts.map((i)=>i.dataValues))
 });
 
 app.get("/products/:id", async (req, res) => {
