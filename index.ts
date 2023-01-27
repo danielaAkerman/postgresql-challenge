@@ -1,7 +1,12 @@
+import * as express from "express";
 import { Sequelize, Model, DataTypes } from "sequelize";
 import { sequelize } from "./db";
 import { User } from "./db/user";
 import { Product } from "./db/product";
+
+const port = process.env.PORT || 3000;
+const app = express();
+app.use(express.json());
 
 // LAS BASES DE DATOS RELACIONALES APORTAN ESTRUCTURA Y COMPLEJIDAD
 // OFRECEN OPORTUNIDADES PARA ESCALAR
@@ -61,3 +66,6 @@ main();
 //   }
 
 // console.log({ "Users Creados": usersCreados.map((i) => i.dataValues) });
+app.listen(port, () => {
+  console.log("Corriendo en puerto http://localhost:" + port);
+});
